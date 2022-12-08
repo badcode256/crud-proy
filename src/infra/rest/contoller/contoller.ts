@@ -7,7 +7,21 @@ export class Controller {
         this.customerDb = customerDb;
 
     }
+    async test(request: any, reply: any) {
+        try {
 
+
+
+            reply.code(200)
+            reply.send({ status: 'success', msg: "servicio habilitado" })
+        } catch (error) {
+            console.log('error generar lastversion-->', error)
+
+
+            reply.code(500)
+            reply.send({ status: 'error', msg: error })
+        }
+    }
 
     async getData(request: any, reply: any) {
         try {
