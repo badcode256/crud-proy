@@ -11,8 +11,18 @@ export const startHttpServer = async (fastify: FastifyInstance, controller: any)
     console.log(request)
     return await reply.status(200).send({ data: 'hello !!' })
   })
-  fastify.get('/get/:ruc', async (request, reply) => {
+  fastify.get('/get', async (request, reply) => {
     await controller.getData(request, reply)
+    await reply
+
+  })
+  fastify.get('/delete/:id', async (request, reply) => {
+    await controller.deteleData(request, reply)
+    await reply
+
+  })
+  fastify.post('/create', async (request, reply) => {
+    await controller.createData(request, reply)
     await reply
 
   })

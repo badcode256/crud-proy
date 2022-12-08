@@ -1,5 +1,8 @@
 // @flow
 import type { CustomerImplRepository } from '../../../domain/repository/customerImplRepository'
+import { ObjectId } from 'mongodb';
+
+
 
 // const ObjectId = require('mongodb').ObjectID
 const COLLECTION_NAME = 'information-application'
@@ -19,6 +22,11 @@ export class CustomerDbMongo implements CustomerImplRepository {
 
     async get(obj: Object): Promise<any> {
         return this.model.find(obj).toArray()
+    }
+    async deleteOne(id: String): Promise<any> {
+
+        return this.model
+            .deleteOne({ _id: new ObjectId(id as string) })
     }
 
 }
