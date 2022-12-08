@@ -10,7 +10,7 @@ export class Controller {
     async test(request: any, reply: any) {
         try {
 
-
+            console.log('request-->', request.params)
 
             reply.code(200)
             reply.send({ status: 'success', msg: "servicio habilitado" })
@@ -25,7 +25,7 @@ export class Controller {
 
     async getData(request: any, reply: any) {
         try {
-
+            console.log('request-->', request.params)
             const data = await this.customerDb.get({})
 
             if (data.length === 0) {
